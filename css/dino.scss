@@ -108,6 +108,21 @@ body {
     @include draw-box($black, 50%, 0, 1rem, 1rem, translate(-50%, -50%), 1);
   }
 
+  &__mouth {
+    position: absolute;
+    display: flex;
+    top: 60%;
+    right: 10%;
+  }
+
+  &__tooth {
+    width: 0;
+    height: 0;
+    border-left: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-top: 2rem solid $white;
+  }
+
   &__body {
     @include draw-box(
       $dino-color--dark,

@@ -1,4 +1,4 @@
-Tone.Transport.bpm.value = 120;
+Tone.Transport.bpm.value = 60;
 
 /**
  * Melody
@@ -68,7 +68,7 @@ mainMelodyPart.probability = 0.9;
  * Bass Melody
  */
 var bassMelody = new Tone.MonoSynth({
-  volume: -5,
+  volume: -15,
   oscillator: {
     type: "square8"
   },
@@ -136,7 +136,6 @@ bassMelodyPart.probability = 0.9;
  * Play Controls
  */
 document.querySelector(".dino").addEventListener("click", function(e) {
-  console.log("click");
   Tone.Transport.start();
 });
 
