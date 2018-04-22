@@ -1,0 +1,220 @@
+$base-size: 10px;
+$dino-color: rgb(82, 156, 86);
+$dino-color--dark: darken($dino-color, 10%);
+$dino-color--darkest: darken($dino-color, 20%);
+$black: #000;
+$white: whitesmoke;
+
+$animation-timing: 1s;
+
+@mixin draw-box(
+  $color,
+  $top,
+  $right,
+  $width,
+  $height,
+  $transform,
+  $z,
+  $bottom: "auto",
+  $left: auto
+) {
+  position: absolute;
+  background: $color;
+  top: $top;
+  right: $right;
+  width: $width;
+  height: $height;
+  transform: $transform;
+  z-index: $z;
+  bottom: $bottom;
+  left: $left;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $base-size;
+}
+
+body {
+  position: relative;
+  background: #eee;
+  min-height: 100vh;
+  background: linear-gradient(
+    #3f87a6,
+    #3f87a6,
+    #ebf8e1 50%,
+    #995d1d 51%,
+    #da9b59 75%
+  );
+  background: linear-gradient(to top, #4b6cb7, #182848);
+}
+
+.sun {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  background: rgb(255, 183, 89);
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1080px;
+  background-image: url(../img/l7_ground.png);
+  background-repeat: repeat-x;
+  animation: bgScroller 20s linear infinite;
+}
+
+.dino {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: auto;
+  bottom: 40rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /**
+   * Dino Head:
+   * contains eye, pupil, mouth, tooth
+   * draw-box paramaters: color | top | right | width | height | transform | z-index
+   */
+  &__head {
+    @include draw-box($dino-color, 0, 0, 13rem, 10rem, translate(50%, -50%), 1);
+    animation: headBob $animation-timing ease-in-out 1s alternate infinite;
+  }
+  &__eye {
+    @include draw-box(
+      $white,
+      2rem,
+      auto,
+      3rem,
+      3rem,
+      translate(0, 0),
+      1,
+      auto,
+      2rem
+    );
+  }
+  &__pupil {
+    @include draw-box($black, 50%, 0, 1rem, 1rem, translate(-50%, -50%), 1);
+  }
+
+  &__body {
+    @include draw-box(
+      $dino-color--dark,
+      5rem,
+      100%,
+      15rem,
+      15rem,
+      translate(0, 0),
+      100
+    );
+  }
+
+  &__arm {
+    @include draw-box(
+      $dino-color,
+      50%,
+      0,
+      5rem,
+      1rem,
+      translate(50%, -50%),
+      20
+    );
+  }
+
+  &__hand {
+    @include draw-box(
+      $dino-color--dark,
+      1rem,
+      0,
+      2rem,
+      1rem,
+      rotate(90deg) translate(auto, auto),
+      20
+    );
+  }
+
+  &__tail {
+    @include draw-box(
+      $dino-color--dark,
+      auto,
+      0,
+      15rem,
+      3rem,
+      translate(-50%, 0),
+      1,
+      0
+    );
+  }
+
+  &__leg {
+    @include draw-box(
+      $dino-color--dark,
+      auto,
+      0,
+      2rem,
+      10rem,
+      translate(0, 0),
+      1,
+      0
+    );
+
+    &--front {
+      transform: translate(-3rem, 50%);
+      animation-duration: 3s;
+      animation: walkFrontLeg $animation-timing ease-in-out 0s alternate
+        infinite;
+    }
+    &--back {
+      background: $dino-color--darkest;
+      transform: translate(-10rem, 50%);
+      animation: walkBackLeg $animation-timing ease-in-out 1s alternate infinite;
+    }
+  }
+}
+
+@keyframes walkFrontLeg {
+  from {
+    transform: translate(-3rem, 50%);
+  }
+  to {
+    transform: translate(-1rem, 50%);
+  }
+}
+
+@keyframes walkBackLeg {
+  from {
+    transform: translate(-10rem, 50%);
+  }
+  to {
+    transform: translate(-6rem, 50%);
+  }
+}
+
+@keyframes headBob {
+  from {
+    transform: translate(50%, -55%);
+  }
+  to {
+    transform: translate(50%, -50%);
+  }
+}
+
+@keyframes bgScroller {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1920px 0;
+  }
+}

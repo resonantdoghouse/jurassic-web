@@ -1,0 +1,222 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+html {
+  font-size: 10px; }
+
+body {
+  position: relative;
+  background: #eee;
+  min-height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3f87a6), color-stop(#3f87a6), color-stop(50%, #ebf8e1), color-stop(51%, #995d1d), color-stop(75%, #da9b59));
+  background: linear-gradient(#3f87a6, #3f87a6, #ebf8e1 50%, #995d1d 51%, #da9b59 75%);
+  background: -webkit-gradient(linear, left bottom, left top, from(#4b6cb7), to(#182848));
+  background: linear-gradient(to top, #4b6cb7, #182848); }
+
+.sun {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  background: #ffb759; }
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1080px;
+  background-image: url(../img/l7_ground.png);
+  background-repeat: repeat-x;
+  -webkit-animation: bgScroller 20s linear infinite;
+          animation: bgScroller 20s linear infinite; }
+
+.dino {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: auto;
+  bottom: 40rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /**
+   * Dino Head:
+   * contains eye, pupil, mouth, tooth
+   * draw-box paramaters: color | top | right | width | height | transform | z-index
+   */ }
+  .dino__head {
+    position: absolute;
+    background: #529c56;
+    top: 0;
+    right: 0;
+    width: 13rem;
+    height: 10rem;
+    -webkit-transform: translate(50%, -50%);
+            transform: translate(50%, -50%);
+    z-index: 1;
+    bottom: "auto";
+    left: auto;
+    -webkit-animation: headBob 1s ease-in-out 1s alternate infinite;
+            animation: headBob 1s ease-in-out 1s alternate infinite; }
+  .dino__eye {
+    position: absolute;
+    background: whitesmoke;
+    top: 2rem;
+    right: auto;
+    width: 3rem;
+    height: 3rem;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    z-index: 1;
+    bottom: auto;
+    left: 2rem; }
+  .dino__pupil {
+    position: absolute;
+    background: #000;
+    top: 50%;
+    right: 0;
+    width: 1rem;
+    height: 1rem;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 1;
+    bottom: "auto";
+    left: auto; }
+  .dino__body {
+    position: absolute;
+    background: #407b44;
+    top: 5rem;
+    right: 100%;
+    width: 15rem;
+    height: 15rem;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    z-index: 100;
+    bottom: "auto";
+    left: auto; }
+  .dino__arm {
+    position: absolute;
+    background: #529c56;
+    top: 50%;
+    right: 0;
+    width: 5rem;
+    height: 1rem;
+    -webkit-transform: translate(50%, -50%);
+            transform: translate(50%, -50%);
+    z-index: 20;
+    bottom: "auto";
+    left: auto; }
+  .dino__hand {
+    position: absolute;
+    background: #407b44;
+    top: 1rem;
+    right: 0;
+    width: 2rem;
+    height: 1rem;
+    -webkit-transform: rotate(90deg) translate(auto, auto);
+            transform: rotate(90deg) translate(auto, auto);
+    z-index: 20;
+    bottom: "auto";
+    left: auto; }
+  .dino__tail {
+    position: absolute;
+    background: #407b44;
+    top: auto;
+    right: 0;
+    width: 15rem;
+    height: 3rem;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    z-index: 1;
+    bottom: 0;
+    left: auto; }
+  .dino__leg {
+    position: absolute;
+    background: #407b44;
+    top: auto;
+    right: 0;
+    width: 2rem;
+    height: 10rem;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    z-index: 1;
+    bottom: 0;
+    left: auto; }
+    .dino__leg--front {
+      -webkit-transform: translate(-3rem, 50%);
+              transform: translate(-3rem, 50%);
+      -webkit-animation-duration: 3s;
+              animation-duration: 3s;
+      -webkit-animation: walkFrontLeg 1s ease-in-out 0s alternate infinite;
+              animation: walkFrontLeg 1s ease-in-out 0s alternate infinite; }
+    .dino__leg--back {
+      background: #2f5931;
+      -webkit-transform: translate(-10rem, 50%);
+              transform: translate(-10rem, 50%);
+      -webkit-animation: walkBackLeg 1s ease-in-out 1s alternate infinite;
+              animation: walkBackLeg 1s ease-in-out 1s alternate infinite; }
+
+@-webkit-keyframes walkFrontLeg {
+  from {
+    -webkit-transform: translate(-3rem, 50%);
+            transform: translate(-3rem, 50%); }
+  to {
+    -webkit-transform: translate(-1rem, 50%);
+            transform: translate(-1rem, 50%); } }
+
+@keyframes walkFrontLeg {
+  from {
+    -webkit-transform: translate(-3rem, 50%);
+            transform: translate(-3rem, 50%); }
+  to {
+    -webkit-transform: translate(-1rem, 50%);
+            transform: translate(-1rem, 50%); } }
+
+@-webkit-keyframes walkBackLeg {
+  from {
+    -webkit-transform: translate(-10rem, 50%);
+            transform: translate(-10rem, 50%); }
+  to {
+    -webkit-transform: translate(-6rem, 50%);
+            transform: translate(-6rem, 50%); } }
+
+@keyframes walkBackLeg {
+  from {
+    -webkit-transform: translate(-10rem, 50%);
+            transform: translate(-10rem, 50%); }
+  to {
+    -webkit-transform: translate(-6rem, 50%);
+            transform: translate(-6rem, 50%); } }
+
+@-webkit-keyframes headBob {
+  from {
+    -webkit-transform: translate(50%, -55%);
+            transform: translate(50%, -55%); }
+  to {
+    -webkit-transform: translate(50%, -50%);
+            transform: translate(50%, -50%); } }
+
+@keyframes headBob {
+  from {
+    -webkit-transform: translate(50%, -55%);
+            transform: translate(50%, -55%); }
+  to {
+    -webkit-transform: translate(50%, -50%);
+            transform: translate(50%, -50%); } }
+
+@-webkit-keyframes bgScroller {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: -1920px 0; } }
+
+@keyframes bgScroller {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: -1920px 0; } }
