@@ -54,6 +54,34 @@ body {
   background: linear-gradient(to top, rgb(65, 45, 39), #5a3f37);
 }
 
+.star-field {
+  height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  .fa-star {
+    padding: 1rem;
+    color: rgba($white, 0.2);
+
+    &:nth-of-type(odd) {
+      line-height: 2rem;
+      font-size: 0.8rem;
+    }
+
+    &:nth-of-type(3n + 3) {
+      font-size: 0.5rem;
+      line-height: 0;
+    }
+
+    &:nth-of-type(4n) {
+      font-size: 0.7rem;
+      line-height: 1rem;
+    }
+  }
+}
+
 /* ==========================================================================
    Dino!
    ========================================================================== */
@@ -205,7 +233,8 @@ body {
 
   .dino {
     &__head {
-      animation: headBob $animation-timing * 1.2 ease-in-out 0s alternate infinite;
+      animation: headBob $animation-timing * 1.2 ease-in-out 0s alternate
+        infinite;
     }
     &__leg {
       &--front {

@@ -37,6 +37,34 @@ body {
   background: -webkit-gradient(linear, left bottom, left top, from(#412d27), to(#5a3f37));
   background: linear-gradient(to top, #412d27, #5a3f37); }
 
+.star-field {
+  height: 100vh;
+  overflow: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+  .star-field .fa-star {
+    padding: 1rem;
+    color: rgba(245, 245, 245, 0.2); }
+    .star-field .fa-star:nth-of-type(odd) {
+      line-height: 2rem;
+      font-size: 0.8rem; }
+    .star-field .fa-star:nth-of-type(3n + 3) {
+      font-size: 0.5rem;
+      line-height: 0; }
+    .star-field .fa-star:nth-of-type(4n) {
+      font-size: 0.7rem;
+      line-height: 1rem; }
+
 /* ==========================================================================
    Dino!
    ========================================================================== */

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  Tone.Transport.bpm.value = 120;
+  Tone.Transport.bpm.value = 90;
 
   // let reverb = new Tone.JCReverb(0.6).connect(Tone.Master);
   // let reverb2 = new Tone.JCReverb(0.1).connect(Tone.Master);
