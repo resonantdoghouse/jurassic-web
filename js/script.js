@@ -135,7 +135,7 @@ bassMelodyPart.probability = 0.9;
 /**
  * Play Controls
  */
-document.querySelector(".dino").addEventListener("click", function(e) {
+document.querySelector("body").addEventListener("click", function(e) {
   Tone.Transport.start();
 });
 

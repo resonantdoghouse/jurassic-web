@@ -1,35 +1,13 @@
+// Jurassic vars
 $base-size: 10px;
 $dino-color: rgb(82, 156, 86);
 $dino-color--dark: darken($dino-color, 10%);
 $dino-color--darkest: darken($dino-color, 20%);
 $black: #000;
 $white: whitesmoke;
-
 $animation-timing: 1s;
 
-@mixin draw-box(
-  $color,
-  $top,
-  $right,
-  $width,
-  $height,
-  $transform,
-  $z,
-  $bottom: "auto",
-  $left: auto
-) {
-  position: absolute;
-  background: $color;
-  top: $top;
-  right: $right;
-  width: $width;
-  height: $height;
-  transform: $transform;
-  z-index: $z;
-  bottom: $bottom;
-  left: $left;
-}
-
+// fix box-sizing
 * {
   box-sizing: border-box;
 }
@@ -52,6 +30,9 @@ body {
   background: linear-gradient(to top, #4b6cb7, #182848);
 }
 
+/* ==========================================================================
+   Environment
+   ========================================================================== */
 .sun {
   position: absolute;
   right: 10%;
@@ -68,44 +49,52 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  height: 1080px;
-  background-image: url(../img/l7_ground.png);
-  background-repeat: repeat-x;
-  animation: bgScroller 20s linear infinite;
+  height: 25rem;
+  background: linear-gradient(to top, rgb(65, 45, 39), #5a3f37);
 }
 
+/* ==========================================================================
+   Dino!
+   ========================================================================== */
 .dino {
-  width: inherit;
-  height: inherit;
+  width: 150px;
+  height: 150px;
   position: absolute;
-  top: auto;
-  bottom: 40rem;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  /**
-   * Dino Head:
-   * contains eye, pupil, mouth, tooth
-   * draw-box paramaters: color | top | right | width | height | transform | z-index
-   */
+  transform: translate(-50%, 0);
+
   &__head {
-    @include draw-box($dino-color, 0, 0, 13rem, 10rem, translate(50%, -50%), 1);
+    position: absolute;
+    background: $dino-color;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 60%;
+    transform: translate(50%, -50%);
+    z-index: 1;
     animation: headBob $animation-timing ease-in-out 1s alternate infinite;
   }
   &__eye {
-    @include draw-box(
-      $white,
-      2rem,
-      auto,
-      3rem,
-      3rem,
-      translate(0, 0),
-      1,
-      auto,
-      2rem
-    );
+    position: absolute;
+    background: $white;
+    top: 20%;
+    left: 20%;
+    width: 20%;
+    height: 30%;
+    transform: translate(0, 0);
+    z-index: 1;
   }
+
   &__pupil {
-    @include draw-box($black, 50%, 0, 1rem, 1rem, translate(-50%, -50%), 1);
+    position: absolute;
+    background: $black;
+    top: 50%;
+    right: 0;
+    width: 40%;
+    height: 40%;
+    transform: translate(-25%, -50%);
+    z-index: 1;
   }
 
   &__mouth {
@@ -118,82 +107,114 @@ body {
   &__tooth {
     width: 0;
     height: 0;
-    border-left: .5rem solid transparent;
-    border-right: .5rem solid transparent;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
     border-top: 2rem solid $white;
   }
 
   &__body {
-    @include draw-box(
-      $dino-color--dark,
-      5rem,
-      100%,
-      15rem,
-      15rem,
-      translate(0, 0),
-      100
-    );
+    position: absolute;
+    background: $dino-color--dark;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
   }
 
   &__arm {
-    @include draw-box(
-      $dino-color,
-      50%,
-      0,
-      5rem,
-      1rem,
-      translate(50%, -50%),
-      20
-    );
+    position: absolute;
+    background: $dino-color;
+    top: 50%;
+    right: 0;
+    width: 5rem;
+    height: 1rem;
+    transform: translate(50%, -50%);
+    z-index: 20;
   }
 
   &__hand {
-    @include draw-box(
-      $dino-color--dark,
-      1rem,
-      0,
-      2rem,
-      1rem,
-      rotate(90deg) translate(auto, auto),
-      20
-    );
+    position: absolute;
+    background: $dino-color--dark;
+    top: 1rem;
+    right: 0;
+    width: 2rem;
+    height: 1rem;
+    transform: rotate(90deg) translate(auto, auto);
+    z-index: 20;
   }
 
   &__tail {
-    @include draw-box(
-      $dino-color--dark,
-      auto,
-      0,
-      15rem,
-      3rem,
-      translate(-50%, 0),
-      1,
-      0
-    );
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-100%, 0);
+    width: 0;
+    height: 0;
+    border-top: 5rem solid transparent;
+    border-bottom: 0px solid transparent;
+    border-right: 10rem solid $dino-color--dark;
   }
 
   &__leg {
-    @include draw-box(
-      $dino-color--dark,
-      auto,
-      0,
-      2rem,
-      10rem,
-      translate(0, 0),
-      1,
-      0
-    );
+    position: absolute;
+    background: $dino-color--dark;
+    top: auto;
+    right: 0;
+    width: 2rem;
+    height: 10rem;
+    transform: translate(0, 0);
+    z-index: 1;
+    bottom: 0;
 
     &--front {
       transform: translate(-3rem, 50%);
       animation-duration: 3s;
       animation: walkFrontLeg $animation-timing ease-in-out 0s alternate
         infinite;
+      // foot
+      &::after {
+        bottom: 0;
+        position: absolute;
+        content: "";
+        width: 4rem;
+        height: 2rem;
+        background: $dino-color--dark;
+      }
     }
     &--back {
       background: $dino-color--darkest;
       transform: translate(-10rem, 50%);
       animation: walkBackLeg $animation-timing ease-in-out 1s alternate infinite;
+      // foot
+      &::after {
+        bottom: 0;
+        position: absolute;
+        content: "";
+        width: 4rem;
+        height: 2rem;
+        background: $dino-color--darkest;
+      }
+    }
+  }
+} // .dino
+
+.dino-2 {
+  left: 25%;
+  width: 150px;
+  height: 200px;
+
+  .dino {
+    &__head {
+      animation: headBob $animation-timing * 1.2 ease-in-out 0s alternate infinite;
+    }
+    &__leg {
+      &--front {
+        animation: walkFrontLeg $animation-timing * 1.2 ease-in-out 0s alternate
+          infinite;
+      }
+      &--back {
+        animation: walkBackLeg $animation-timing * 1.2 ease-in-out 1s alternate
+          infinite;
+      }
     }
   }
 }
@@ -222,14 +243,5 @@ body {
   }
   to {
     transform: translate(50%, -50%);
-  }
-}
-
-@keyframes bgScroller {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -1920px 0;
   }
 }
