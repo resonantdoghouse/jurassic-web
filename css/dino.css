@@ -6,6 +6,7 @@ html {
   font-size: 10px; }
 
 body {
+  font-family: 'Press Start 2P', cursive;
   cursor: pointer;
   position: relative;
   background: #eee;
@@ -14,6 +15,20 @@ body {
   background: linear-gradient(#3f87a6, #3f87a6, #ebf8e1 50%, #995d1d 51%, #da9b59 75%);
   background: -webkit-gradient(linear, left bottom, left top, from(#4b6cb7), to(#182848));
   background: linear-gradient(to top, #4b6cb7, #182848); }
+
+h1 {
+  position: absolute;
+  font-size: 2.5rem;
+  color: whitesmoke;
+  top: 1rem;
+  left: 1rem; }
+
+p {
+  position: absolute;
+  color: whitesmoke;
+  font-size: 1rem;
+  left: 1rem;
+  top: 4.5rem; }
 
 /* ==========================================================================
    Environment
