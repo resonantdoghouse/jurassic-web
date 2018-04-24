@@ -17,6 +17,7 @@ html {
 }
 
 body {
+  cursor: pointer;
   position: relative;
   background: #eee;
   min-height: 100vh;
@@ -73,7 +74,7 @@ body {
     height: 60%;
     transform: translate(50%, -50%);
     z-index: 1;
-    animation: headBob $animation-timing ease-in-out 1s alternate infinite;
+    animation: headBob $animation-timing ease-in-out 0s alternate infinite;
   }
   &__eye {
     position: absolute;

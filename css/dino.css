@@ -6,6 +6,7 @@ html {
   font-size: 10px; }
 
 body {
+  cursor: pointer;
   position: relative;
   background: #eee;
   min-height: 100vh;
@@ -57,8 +58,8 @@ body {
     -webkit-transform: translate(50%, -50%);
             transform: translate(50%, -50%);
     z-index: 1;
-    -webkit-animation: headBob 1s ease-in-out 1s alternate infinite;
-            animation: headBob 1s ease-in-out 1s alternate infinite; }
+    -webkit-animation: headBob 1s ease-in-out 0s alternate infinite;
+            animation: headBob 1s ease-in-out 0s alternate infinite; }
   .dino__eye {
     position: absolute;
     background: whitesmoke;
