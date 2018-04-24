@@ -3,6 +3,11 @@ $base-size: 10px;
 $dino-color: rgb(82, 156, 86);
 $dino-color--dark: darken($dino-color, 10%);
 $dino-color--darkest: darken($dino-color, 20%);
+
+$dino-color-2: #ae60c9;
+$dino-color-2--dark: darken($dino-color-2, 10%);
+$dino-color-2--darkest: darken($dino-color-2, 20%);
+
 $black: #000;
 $white: whitesmoke;
 $animation-timing: 1s;
@@ -51,7 +56,7 @@ body {
   right: 0;
   width: 100%;
   height: 25rem;
-  background: linear-gradient(to top, rgb(65, 45, 39), #5a3f37);
+  background: linear-gradient(to top, rgb(20, 14, 12), #46312a);
 }
 
 .star-field {
@@ -103,6 +108,8 @@ body {
     transform: translate(50%, -50%);
     z-index: 1;
     animation: headBob $animation-timing ease-in-out 0s alternate infinite;
+
+    box-shadow: -1rem 1rem 0.5rem rgba($black, 0.2);
   }
   &__eye {
     position: absolute;
@@ -146,7 +153,7 @@ body {
     background: $dino-color--dark;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: 10;
   }
 
   &__arm {
@@ -158,6 +165,7 @@ body {
     height: 1rem;
     transform: translate(50%, -50%);
     z-index: 20;
+    box-shadow: -1rem 1rem 0.5rem 0.2rem rgba($black, 0.2);
   }
 
   &__hand {
@@ -181,6 +189,7 @@ body {
     border-top: 5rem solid transparent;
     border-bottom: 0px solid transparent;
     border-right: 10rem solid $dino-color--dark;
+    z-index: 1;
   }
 
   &__leg {
@@ -207,12 +216,14 @@ body {
         width: 4rem;
         height: 2rem;
         background: $dino-color--dark;
+        box-shadow: -1rem 1rem 1rem 0.5rem rgba($black, 0.2);
       }
     }
     &--back {
       background: $dino-color--darkest;
       transform: translate(-10rem, 50%);
       animation: walkBackLeg $animation-timing ease-in-out 1s alternate infinite;
+
       // foot
       &::after {
         bottom: 0;
@@ -221,30 +232,52 @@ body {
         width: 4rem;
         height: 2rem;
         background: $dino-color--darkest;
+        box-shadow: -1rem 1rem 1rem 0.5rem rgba($black, 0.2);
       }
     }
   }
 } // .dino
 
 .dino-2 {
-  left: 25%;
+  left: 15%;
   width: 150px;
   height: 200px;
 
   .dino {
+    &__body {
+      background: $dino-color-2--dark;
+    }
     &__head {
+      background: $dino-color-2;
       animation: headBob $animation-timing * 1.2 ease-in-out 0s alternate
         infinite;
     }
+    &__arm {
+      background: $dino-color-2;
+    }
+    &__hand {
+      background: $dino-color-2--dark;
+    }
     &__leg {
       &--front {
+        background: $dino-color-2--dark;
         animation: walkFrontLeg $animation-timing * 1.2 ease-in-out 0s alternate
           infinite;
+        &::after {
+          background: $dino-color-2--dark;
+        }
       }
       &--back {
+        background: $dino-color-2--darkest;
         animation: walkBackLeg $animation-timing * 1.2 ease-in-out 1s alternate
           infinite;
+        &::after {
+          background: $dino-color-2--darkest;
+        }
       }
+    }
+    &__tail {
+      border-right: 10rem solid $dino-color-2--dark;
     }
   }
 }
